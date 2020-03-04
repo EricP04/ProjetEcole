@@ -1,2 +1,4 @@
-# ProjetEcole
-Projet fait dans le cadre du cours de c# Bac2
+#Projet Ecole
+
+Projet à rendre dans le cadre du cours de c#
+
