@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MathUtilLibrary;
-namespace ProjectEcole1
+namespace ProjectLibraryClass
 {
-    abstract class CartoObj
+    public abstract class CartoObj
     {
         protected int id;
         protected static int compteur;

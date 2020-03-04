@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MathUtilLibrary;
-namespace ProjectEcole1
+namespace ProjectLibraryClass
 {
-    class Coordonnees : CartoObj
+    public class Coordonnees : CartoObj
     {
         private double x;
         private double y;

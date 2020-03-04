@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
-using MathUtilLibrary;
-
-namespace ProjectEcole1
+using ProjectLibraryClass;
+namespace ProjetConsole
 {
     class Program
     {
@@ -14,10 +13,10 @@ namespace ProjectEcole1
         {
             int choix;
             bool fin = false;
-            while(!fin)
+            while (!fin)
             {
-                choix = Choix("Classe Coordonnee","Classe POI","Classe Polyline","Classe Polygon","Interface IIsPointClose",
-                    "Interface IPointy","Liste générique CartoObj","Liste générique Polyline","Classer liste d'objet CartObj",
+                choix = Choix("Classe Coordonnee", "Classe POI", "Classe Polyline", "Classe Polygon", "Interface IIsPointClose",
+                    "Interface IPointy", "Liste générique CartoObj", "Liste générique Polyline", "Classer liste d'objet CartObj",
                     "Quitter");
                 switch (choix)
                 {
@@ -28,10 +27,10 @@ namespace ProjectEcole1
                             Console.WriteLine("Test du constructeur par défault et de la surcharge ToString()");
                             Console.WriteLine(coord.ToString());
                             double x1 = 2, y1 = 4;
-                            Coordonnees coord2 = new Coordonnees(x1,y1);
+                            Coordonnees coord2 = new Coordonnees(x1, y1);
                             Console.WriteLine("Test du constructeur d'initialisation (et de l'operateur ToString()");
                             Console.WriteLine(coord2.ToString());
-                            break; 
+                            break;
                         }
                     case 2:
                         {
@@ -88,7 +87,7 @@ namespace ProjectEcole1
                             tab[0] = coord1;
                             tab[1] = coord2;
                             tab[2] = coord3;
-                            Polygon poly2 = new Polygon(tab,rempl,cont,opa);
+                            Polygon poly2 = new Polygon(tab, rempl, cont, opa);
                             Console.WriteLine("Test du constructeur d'initialisation et de la surcharge de l'opérateur ToString()");
                             Console.WriteLine(poly2.ToString());
                             Console.WriteLine("Test de la fonction Draw()");
@@ -103,82 +102,82 @@ namespace ProjectEcole1
                             bool isClose;
                             Console.WriteLine("Test de l'interface IIsPointClose");
                             int choix2 = Choix("POI", "Polyline", "Polygon");
-                            switch(choix2)
+                            switch (choix2)
                             {
-                            case 1:
-                                {
-                                Console.WriteLine("POI");
-                                POI poi = new POI(2.035, 5.310);
-                                Console.WriteLine(poi.ToString());
-                                Console.WriteLine("Veuillez saisir des coordonnées : ");
-                                Console.WriteLine("X = "); x = Convert.ToDouble(Console.ReadLine());
-                                Console.WriteLine("Y = "); y = Convert.ToDouble(Console.ReadLine());
-                                Coordonnees coordPerso = new Coordonnees(x, y);
-                                Console.WriteLine(coordPerso.ToString());
-                                Console.WriteLine("Veuillez saisir le taux de précision : "); precision = Convert.ToDouble(Console.ReadLine());
-                                isClose = poi.IsPointClose(coordPerso.X, coordPerso.Y, precision);
-                                Console.WriteLine("isClose = " + isClose);
+                                case 1:
+                                    {
+                                        Console.WriteLine("POI");
+                                        POI poi = new POI(2.035, 5.310);
+                                        Console.WriteLine(poi.ToString());
+                                        Console.WriteLine("Veuillez saisir des coordonnées : ");
+                                        Console.WriteLine("X = "); x = Convert.ToDouble(Console.ReadLine());
+                                        Console.WriteLine("Y = "); y = Convert.ToDouble(Console.ReadLine());
+                                        Coordonnees coordPerso = new Coordonnees(x, y);
+                                        Console.WriteLine(coordPerso.ToString());
+                                        Console.WriteLine("Veuillez saisir le taux de précision : "); precision = Convert.ToDouble(Console.ReadLine());
+                                        isClose = poi.IsPointClose(coordPerso.X, coordPerso.Y, precision);
+                                        Console.WriteLine("isClose = " + isClose);
                                         break;
-                            
-                                }
-                            case 2:
-                                {
 
-                                Console.WriteLine("Polyline");
-                                Coordonnees[] tab = new Coordonnees[3];
-                                tab[0] = new Coordonnees(2.500, 2.500);
-                                tab[1] = new Coordonnees(5.000, 5.000);
-                                tab[2] = new Coordonnees(1.540, 1.540);
-                                Color white = Colors.White;
-                                Polyline poly = new Polyline(5, white, tab);
-                                Console.WriteLine(poly.ToString());
-                                Console.WriteLine("Veuillez saisir des coordonnées : ");
-                                Console.WriteLine("X = "); x = Convert.ToDouble(Console.ReadLine());
-                                Console.WriteLine("Y = "); y = Convert.ToDouble(Console.ReadLine());
-                                Coordonnees coordPerso = new Coordonnees(x, y);
-                                Console.WriteLine(coordPerso.ToString());
-                                Console.WriteLine("Veuillez saisir le taux de précision : "); precision = Convert.ToDouble(Console.ReadLine());
-                                isClose = poly.IsPointClose(coordPerso.X, coordPerso.Y, precision);
-                                Console.WriteLine("isClose = " + isClose);
-                                break;
-                                }
-                            case 3:
-                            {
-                                Console.WriteLine("Polygone");
-                                /*///Triangle Harcodé
-                                Coordonnees[] tab = new Coordonnees[3];
-                                tab[0] = new Coordonnees(1, 1);
-                                tab[1] = new Coordonnees(2, 3);
-                                tab[2] = new Coordonnees(3, 1);*/
-                                /*///Carré négatif hardcodé*/
-                                Coordonnees[] tab = new Coordonnees[4];
-                                tab[0] = new Coordonnees(1, -1);
-                                tab[1] = new Coordonnees(3,-1);
-                                tab[2] = new Coordonnees(3, -3);
-                                tab[3] = new Coordonnees(1, -3);
-                                Color inte = Colors.White;
-                                Color cont = Colors.Red;
-                                Polygon poly = new Polygon(tab, inte, cont, 0.5);
-                                Console.WriteLine(poly.ToString());
-                                Console.WriteLine("Veuillez saisir des coordonnées : ");
-                                Console.WriteLine("X = "); x = Convert.ToDouble(Console.ReadLine());
-                                Console.WriteLine("Y = "); y = Convert.ToDouble(Console.ReadLine());
-                                Coordonnees coordPerso = new Coordonnees(x, y);
-                                Console.WriteLine(coordPerso.ToString());
-                                isClose = poly.IsPointClose(coordPerso.X, coordPerso.Y, 0);
-                                Console.WriteLine("isClose = " + isClose);
-                                break;
+                                    }
+                                case 2:
+                                    {
+
+                                        Console.WriteLine("Polyline");
+                                        Coordonnees[] tab = new Coordonnees[3];
+                                        tab[0] = new Coordonnees(2.500, 2.500);
+                                        tab[1] = new Coordonnees(5.000, 5.000);
+                                        tab[2] = new Coordonnees(1.540, 1.540);
+                                        Color white = Colors.White;
+                                        Polyline poly = new Polyline(5, white, tab);
+                                        Console.WriteLine(poly.ToString());
+                                        Console.WriteLine("Veuillez saisir des coordonnées : ");
+                                        Console.WriteLine("X = "); x = Convert.ToDouble(Console.ReadLine());
+                                        Console.WriteLine("Y = "); y = Convert.ToDouble(Console.ReadLine());
+                                        Coordonnees coordPerso = new Coordonnees(x, y);
+                                        Console.WriteLine(coordPerso.ToString());
+                                        Console.WriteLine("Veuillez saisir le taux de précision : "); precision = Convert.ToDouble(Console.ReadLine());
+                                        isClose = poly.IsPointClose(coordPerso.X, coordPerso.Y, precision);
+                                        Console.WriteLine("isClose = " + isClose);
+                                        break;
+                                    }
+                                case 3:
+                                    {
+                                        Console.WriteLine("Polygone");
+                                        /*///Triangle Harcodé
+                                        Coordonnees[] tab = new Coordonnees[3];
+                                        tab[0] = new Coordonnees(1, 1);
+                                        tab[1] = new Coordonnees(2, 3);
+                                        tab[2] = new Coordonnees(3, 1);*/
+                                        /*///Carré négatif hardcodé*/
+                                        Coordonnees[] tab = new Coordonnees[4];
+                                        tab[0] = new Coordonnees(1, -1);
+                                        tab[1] = new Coordonnees(3, -1);
+                                        tab[2] = new Coordonnees(3, -3);
+                                        tab[3] = new Coordonnees(1, -3);
+                                        Color inte = Colors.White;
+                                        Color cont = Colors.Red;
+                                        Polygon poly = new Polygon(tab, inte, cont, 0.5);
+                                        Console.WriteLine(poly.ToString());
+                                        Console.WriteLine("Veuillez saisir des coordonnées : ");
+                                        Console.WriteLine("X = "); x = Convert.ToDouble(Console.ReadLine());
+                                        Console.WriteLine("Y = "); y = Convert.ToDouble(Console.ReadLine());
+                                        Coordonnees coordPerso = new Coordonnees(x, y);
+                                        Console.WriteLine(coordPerso.ToString());
+                                        isClose = poly.IsPointClose(coordPerso.X, coordPerso.Y, 0);
+                                        Console.WriteLine("isClose = " + isClose);
+                                        break;
+                                    }
                             }
-                        }
-                        
-                            
+
+
                             break;
                         }
                     case 6:
                         {
                             Console.WriteLine("Test de l'interface IIPointy");
                             int choix2 = Choix("Polyline", "Polygon", "Quitter");
-                            switch(choix2)
+                            switch (choix2)
                             {
                                 case 1:
                                     {
@@ -189,12 +188,12 @@ namespace ProjectEcole1
                                         tab[1] = new Coordonnees(5.6, 2.3597);
                                         tab[2] = new Coordonnees(3.5, 5);
                                         Color col = Colors.White;
-                                        Polyline poly = new Polyline(2,col, tab);
+                                        Polyline poly = new Polyline(2, col, tab);
                                         Console.WriteLine(poly);
                                         Console.WriteLine("Nombre de points = " + poly.nbPoint);
                                         Console.WriteLine("Veuillez saisir les coordonnées d'un nouveau points :");
-                                        Console.Write("X = ");x = Convert.ToInt32(Console.ReadLine());Console.WriteLine();
-                                        Console.Write("Y = ");y = Convert.ToInt32(Console.ReadLine()); Console.WriteLine();
+                                        Console.Write("X = "); x = Convert.ToInt32(Console.ReadLine()); Console.WriteLine();
+                                        Console.Write("Y = "); y = Convert.ToInt32(Console.ReadLine()); Console.WriteLine();
                                         poly.AddCoord(new Coordonnees(x, y));
                                         Console.WriteLine(poly);
                                         Console.WriteLine("Nombre de points = " + poly.nbPoint);
@@ -209,11 +208,11 @@ namespace ProjectEcole1
                                         tab[2] = new Coordonnees(3.5, 5);
                                         Color col = Colors.White;
                                         Color col2 = Colors.Red;
-                                        Polygon poly = new Polygon(tab, col,col2, 0.5);
+                                        Polygon poly = new Polygon(tab, col, col2, 0.5);
                                         Console.WriteLine("---Coordonnees---");
                                         Console.WriteLine(poly);
                                         Console.WriteLine("Nombre de points = " + poly.nbPoint);
-                                      
+
                                         break;
                                     }
                             }
@@ -223,25 +222,25 @@ namespace ProjectEcole1
                         {
                             Console.WriteLine("---Test de la liste générique CartoObj---");
                             Coordonnees[] cTab = new Coordonnees[4];
-                            cTab[0] = new Coordonnees(1,1);
-                            cTab[1] = new Coordonnees(3,1);
-                            cTab[2] = new Coordonnees(3,3);
-                            cTab[3] = new Coordonnees(3,1);
+                            cTab[0] = new Coordonnees(1, 1);
+                            cTab[1] = new Coordonnees(3, 1);
+                            cTab[2] = new Coordonnees(3, 3);
+                            cTab[3] = new Coordonnees(3, 1);
 
                             Coordonnees[] cTab2 = new Coordonnees[3];
-                            cTab2[0] = new Coordonnees(1,1);
-                            cTab2[1] = new Coordonnees(4,4);
-                            cTab2[2] = new Coordonnees(7,1);
+                            cTab2[0] = new Coordonnees(1, 1);
+                            cTab2[1] = new Coordonnees(4, 4);
+                            cTab2[2] = new Coordonnees(7, 1);
                             ///J'implémente directement un objet de chaque sorte (hardcodé)
                             List<CartoObj> lCarto = new List<CartoObj>() {new Coordonnees(2.5013,5.6978), new POI("POIDansListeGénérique",
                                 5.697236,60.348), new Polygon(cTab,Colors.Red, Colors.Green,0.5),new Polyline(2,Colors.DarkGray,cTab2)};
-                            int choix2 = Choix("Afficher la liste complete", "Afficher les objets implémentant IPointy", "Afficher les objets n'implémentant pas IPointy","Quitter");
-                            switch(choix2)
+                            int choix2 = Choix("Afficher la liste complete", "Afficher les objets implémentant IPointy", "Afficher les objets n'implémentant pas IPointy", "Quitter");
+                            switch (choix2)
                             {
                                 case 1:
                                     {
                                         Console.WriteLine("---Liste complete---");
-                                        foreach(CartoObj co in lCarto)
+                                        foreach (CartoObj co in lCarto)
                                         {
                                             Console.WriteLine(co);
                                         }
@@ -250,10 +249,10 @@ namespace ProjectEcole1
                                 case 2:
                                     {
                                         Console.WriteLine("---Liste des objets implémentant IPointy---");
-                                        foreach(CartoObj co in lCarto)
+                                        foreach (CartoObj co in lCarto)
                                         {
-                                            if(co is IPointy)
-                                            Console.WriteLine(co);
+                                            if (co is IPointy)
+                                                Console.WriteLine(co);
                                         }
                                         break;
                                     }
@@ -262,10 +261,10 @@ namespace ProjectEcole1
                                         Console.WriteLine("---Liste des objets n'implémentant pas IPointy---");
                                         foreach (CartoObj co in lCarto)
                                         {
-                                            if(!(co is IPointy))
+                                            if (!(co is IPointy))
                                             {
                                                 Console.WriteLine(co);
-                                            } 
+                                            }
                                         }
                                         break;
                                     }
@@ -292,21 +291,21 @@ namespace ProjectEcole1
 
                             };
                             Console.WriteLine("---Affichage de la liste générique de polyline---");
-                            foreach(Polyline pol in lPoly)
+                            foreach (Polyline pol in lPoly)
                             {
                                 Console.WriteLine(pol);
                             }
                             ///Tri
                             lPoly.Sort();
                             Console.WriteLine("---Affichage de la liste générique de polyline trié sur leur longueur---");
-                            foreach(Polyline pol in lPoly)
+                            foreach (Polyline pol in lPoly)
                             {
                                 Console.WriteLine("Longueur : " + pol.LongueurPolyline().ToString());
                                 Console.WriteLine(pol);
                             }
                             lPoly.Sort(new MyPolylineBoundingBoxComparer());
                             Console.WriteLine("---Affichage de la liste générique du polyline trié sur leur surface---");
-                            foreach(Polyline po1 in lPoly)
+                            foreach (Polyline po1 in lPoly)
                             {
                                 Console.WriteLine("Surface : " + po1.CalculSurface()); ///Temporaire, juste pour vérifier la valeur des surfaces 
                                 Console.WriteLine(po1);
@@ -354,26 +353,26 @@ namespace ProjectEcole1
                                     "proche d'un point dont vous passez les paramètres ? [y/n]");
                                 cki = Console.ReadKey();
                             } while (cki.Key != ConsoleKey.Y && cki.Key != ConsoleKey.N);
-                            if(cki.Key == ConsoleKey.Y)
+                            if (cki.Key == ConsoleKey.Y)
                             {
                                 double prec;
                                 ///Saisie des coordonnées par l'utilisateur
                                 double x, y;
-                                Console.Write("X = ");x = Convert.ToDouble(Console.ReadLine()); Console.WriteLine();
-                                Console.Write("Y = ");y = Convert.ToDouble(Console.ReadLine());Console.WriteLine();
-                                Console.Write("Precision = "); prec = Convert.ToDouble(Console.ReadLine());Console.WriteLine();
+                                Console.Write("X = "); x = Convert.ToDouble(Console.ReadLine()); Console.WriteLine();
+                                Console.Write("Y = "); y = Convert.ToDouble(Console.ReadLine()); Console.WriteLine();
+                                Console.Write("Precision = "); prec = Convert.ToDouble(Console.ReadLine()); Console.WriteLine();
                                 ///Recherche d'une certaines proximités avec un des polylines composant la liste
                                 List<Polyline> lPolyProche = new List<Polyline>();
-                                foreach(Polyline pol in lPoly)
+                                foreach (Polyline pol in lPoly)
                                 {
-                                    if(pol.IsPointClose(x,y,prec))
+                                    if (pol.IsPointClose(x, y, prec))
                                     {
                                         lPolyProche.Add(pol);
                                     }
                                 }
                                 if (lPolyProche.Count > 0)
                                 {
-                                    foreach(Polyline pol in lPolyProche)
+                                    foreach (Polyline pol in lPolyProche)
                                     {
                                         Console.WriteLine(pol);
                                     }
@@ -381,8 +380,8 @@ namespace ProjectEcole1
                                 else
                                     Console.WriteLine("Aucun polyline présent dans la liste n'est proche du point rentrée en paramètre");
 
-                                Console.WriteLine("Rappel des coordonnées : (" + x+ "," + y +")");
-                                
+                                Console.WriteLine("Rappel des coordonnées : (" + x + "," + y + ")");
+
 
                             }
 
@@ -415,14 +414,14 @@ namespace ProjectEcole1
 
                             };
                             Console.WriteLine("Affichage de la liste non trié");
-                            foreach(CartoObj co in lCarto)
+                            foreach (CartoObj co in lCarto)
                             {
                                 Console.WriteLine(co.ToString());
                             }
                             Console.WriteLine("Trie de la liste CartoObj");
                             lCarto.Sort(new CartoObjComparer());
                             Console.WriteLine("Affichage de la liste trié");
-                            foreach(CartoObj co in lCarto)
+                            foreach (CartoObj co in lCarto)
                             {
                                 Console.WriteLine(co.ToString());
                             }
@@ -442,9 +441,9 @@ namespace ProjectEcole1
         {
             int choix;
             int i = 1;
-            foreach(string c in pos)
+            foreach (string c in pos)
             {
-                Console.WriteLine(i+") " + c);
+                Console.WriteLine(i + ") " + c);
                 i++;
             }
             do

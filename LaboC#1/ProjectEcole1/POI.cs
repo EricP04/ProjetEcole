@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MathUtilLibrary;
-namespace ProjectEcole1
+namespace ProjectLibraryClass
 {
-    class POI : Coordonnees, IIsPointClose
+    public class POI : Coordonnees, IIsPointClose
     {
         private string description;
         public POI(double x= 50.610869,double y =5.510435) : base(x,y)

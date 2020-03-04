@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MathUtilLibrary;
-namespace ProjectEcole1
+namespace ProjectLibraryClass
 {
-    class CartoObjComparer: IComparer<CartoObj>
+    public class CartoObjComparer: IComparer<CartoObj>
     {
         public int Compare(CartoObj co1, CartoObj co2)
       {

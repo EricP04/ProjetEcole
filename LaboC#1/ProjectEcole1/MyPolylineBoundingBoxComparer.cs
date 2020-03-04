@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectEcole1
+namespace ProjectLibraryClass
 {
-    class MyPolylineBoundingBoxComparer : IComparer<Polyline>
+    public class MyPolylineBoundingBoxComparer : IComparer<Polyline>
     {
         public int Compare(Polyline poly1, Polyline poly2)
         {

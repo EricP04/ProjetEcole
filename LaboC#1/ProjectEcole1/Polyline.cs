@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using System.Windows.Media;
 using MathUtilLibrary;
-namespace ProjectEcole1
+namespace ProjectLibraryClass
 {
-    class Polyline : CartoObj, IIsPointClose, IPointy, IComparable<Polyline>
+    public class Polyline : CartoObj, IIsPointClose, IPointy, IComparable<Polyline>
     {
         private List<Coordonnees> lCoordonnees;
         private Color color;

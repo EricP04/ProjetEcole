@@ -20,10 +20,10 @@ Coordonnees),
 • La redéfinition de la méthode Draw() qui affiche les
 informations concernant l’objet polygon dans la console
 • TESTER LA CLASSE*/
-namespace ProjectEcole1
+namespace ProjectLibraryClass
 {
     
-    class Polygon : CartoObj,IIsPointClose,IPointy
+   public  class Polygon : CartoObj,IIsPointClose,IPointy
     {
         private List<Coordonnees> lCoordonnees;
         private Color remplissage;
